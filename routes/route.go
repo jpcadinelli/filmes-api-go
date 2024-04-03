@@ -8,5 +8,6 @@ import (
 func HandleRequests() {
 	r := gin.Default()
 	r.GET("/filmes", controllers.ExibeFilmes)
+	r.POST("/filmes", controllers.CriaNovoFilme)
 	r.Run()
 }
