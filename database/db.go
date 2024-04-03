@@ -3,6 +3,7 @@ package database
 import (
 	"log"
 
+	"github.com/jpcadinelli/filmes-api-go/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -18,4 +19,5 @@ func ConectaComBancoDeDados() {
 	if err != nil {
 		log.Panic("Erro ao conectar com o banc ode dados")
 	}
+	DB.AutoMigrate(&models.Filme{})
 }
