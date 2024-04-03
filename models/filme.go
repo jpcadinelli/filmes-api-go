@@ -1,6 +1,9 @@
 package models
 
+import "gorm.io/gorm"
+
 type Filme struct {
+	gorm.Model
 	Titulo                  string `json:"título"`
 	Ano                     string `json:"ano"`
 	Sinopse                 string `json:"sinopse"`
