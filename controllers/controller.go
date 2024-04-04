@@ -29,5 +29,10 @@ func BuscaFilmePorId(c *gin.Context) {
 	var filme models.Filme
 	id := c.Params.ByName("id")
 	database.DB.First(&filme, id)
+	if filme.ID == 0 {
+		c.JSON(http.StatusNotFound, gin.H{
+			"Not found":"Filme não encontrado"})
+		return
+	}
 	c.JSON(http.StatusOK, filme)
 }
