@@ -58,3 +58,10 @@ func EditaFilme(c *gin.Context) {
 	database.DB.Model(&filme).UpdateColumns(filme)
 	c.JSON(http.StatusOK, filme)
 }
+
+func BuscaFilmePorIdade(c *gin.Context) {
+	var filmes []models.Filme
+	idade := c.Params.ByName("idade")
+	database.DB.Find(&filmes, map[string]interface{}{"classificacao_indicativa": idade})
+	c.JSON(http.StatusOK, filmes)
+}
