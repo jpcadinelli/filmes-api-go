@@ -24,3 +24,10 @@ func CriaNovoFilme(c *gin.Context) {
 	database.DB.Create((&filme))
 	c.JSON(http.StatusOK, filme)
 }
+
+func BuscaFilmePorId(c *gin.Context) {
+	var filme models.Filme
+	id := c.Params.ByName("id")
+	database.DB.First(&filme, id)
+	c.JSON(http.StatusOK, filme)
+}
