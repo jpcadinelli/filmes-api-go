@@ -62,7 +62,11 @@ func EditaFilme(c *gin.Context) {
 func BuscaFilmePorIdade(c *gin.Context) {
 	var filmes []models.Filme
 	idade := c.Params.ByName("idade")
-	database.DB.Find(&filmes, "classificacao_indicativa <= ? OR classificacao_indicativa = 'Livre'", idade)
+	if idade == "Livre" {
+		database.DB.Find(&filmes, "classificacao_indicativa = 'Livre'")
+	} else {
+		database.DB.Find(&filmes, "classificacao_indicativa <= ? OR classificacao_indicativa = 'Livre'", idade)
+	}
 	c.JSON(http.StatusOK, filmes)
 }
 
