@@ -65,3 +65,10 @@ func BuscaFilmePorIdade(c *gin.Context) {
 	database.DB.Find(&filmes, "classificacao_indicativa <= ? OR classificacao_indicativa = 'Livre'", idade)
 	c.JSON(http.StatusOK, filmes)
 }
+
+func BuscaFilmePorGenero(c *gin.Context) {
+	var filmes []models.Filme
+	genero := c.Params.ByName("genero")
+	database.DB.Find(&filmes, "generos LIKE ?", "%"+genero+"%")
+	c.JSON(http.StatusOK, filmes)
+}
