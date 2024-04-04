@@ -31,8 +31,17 @@ func BuscaFilmePorId(c *gin.Context) {
 	database.DB.First(&filme, id)
 	if filme.ID == 0 {
 		c.JSON(http.StatusNotFound, gin.H{
-			"Not found":"Filme não encontrado"})
+			"Not found": "Filme não encontrado"})
 		return
 	}
 	c.JSON(http.StatusOK, filme)
+}
+
+func DeletaFilme(c *gin.Context) {
+	var filme models.Filme
+	id := c.Params.ByName("id")
+	database.DB.Delete(&filme, id)
+	c.JSON(http.StatusOK, gin.H{
+		"data": "Filme deletado com sucesso",
+	})
 }
