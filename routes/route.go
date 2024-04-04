@@ -14,5 +14,6 @@ func HandleRequests() {
 	r.PATCH("/filmes/:id", controllers.EditaFilme)
 	r.GET("/filmes/ci/:idade", controllers.BuscaFilmePorIdade)
 	r.GET("/filmes/genero/:genero", controllers.BuscaFilmePorGenero)
+	r.GET("/filmes/nota/:nota", controllers.BuscaFilmePorNota)
 	r.Run()
 }
