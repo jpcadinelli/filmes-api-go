@@ -11,5 +11,6 @@ func HandleRequests() {
 	r.POST("/filmes", controllers.CriaNovoFilme)
 	r.GET("/filmes/:id", controllers.BuscaFilmePorId)
 	r.DELETE("/filmes/:id", controllers.DeletaFilme)
+	r.PATCH("/filmes/:id", controllers.EditaFilme)
 	r.Run()
 }

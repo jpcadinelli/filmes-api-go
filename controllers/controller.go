@@ -45,3 +45,16 @@ func DeletaFilme(c *gin.Context) {
 		"data": "Filme deletado com sucesso",
 	})
 }
+
+func EditaFilme(c *gin.Context) {
+	var filme models.Filme
+	id := c.Params.ByName("id")
+	database.DB.First(&filme, id)
+	if err := c.ShouldBindJSON(&filme); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err.Error()})
+		return
+	}
+	database.DB.Model(&filme).UpdateColumns(filme)
+	c.JSON(http.StatusOK, filme)
+}
