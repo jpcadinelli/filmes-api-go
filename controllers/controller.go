@@ -83,3 +83,10 @@ func BuscaFilmePorNota(c *gin.Context) {
 	database.DB.Order("classificacao desc, titulo").Find(&filmes, "classificacao >= ?", nota)
 	c.JSON(http.StatusOK, filmes)
 }
+
+func BuscaFilmePorTitulo(c *gin.Context) {
+	var filmes []models.Filme
+	titulo := c.Params.ByName("titulo")
+	database.DB.Order("ano asc").Find(&filmes, "titulo LIKE ?", "%"+titulo+"%")
+	c.JSON(http.StatusOK, filmes)
+}

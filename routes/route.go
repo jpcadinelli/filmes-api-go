@@ -15,5 +15,6 @@ func HandleRequests() {
 	r.GET("/filmes/ci/:idade", controllers.BuscaFilmePorIdade)
 	r.GET("/filmes/genero/:genero", controllers.BuscaFilmePorGenero)
 	r.GET("/filmes/nota/:nota", controllers.BuscaFilmePorNota)
+	r.GET("/filmes/titulo/:titulo", controllers.BuscaFilmePorTitulo)
 	r.Run()
 }
