@@ -9,7 +9,9 @@ import (
 )
 
 func ExibeFilmes(c *gin.Context) {
-	c.JSON(200, models.Filmes)
+	var filmes []models.Filme
+	database.DB.Find(&filmes)
+	c.JSON(200, filmes)
 }
 
 func CriaNovoFilme(c *gin.Context) {

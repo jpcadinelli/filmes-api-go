@@ -11,5 +11,3 @@ type Filme struct {
 	ClassificacaoIndicativa string `json:"classificacao_indicativa"`
 	Classificacao           string `json:"classificacao"`
 }
-
-var Filmes []Filme
